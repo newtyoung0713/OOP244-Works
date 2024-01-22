@@ -5,7 +5,7 @@ namespace seneca{
 // Your header file content goes here
 
 // Maximum number of samples in an graph
-const int MAX_NO_OF_SAMPLES = 20; 
+// const int MAX_NO_OF_SAMPLES = 20; 
 const int GRAPH_WIDTH = 65;
 // Fills the samples array with the statistic samples
 void getSamples(int samples[], int noOfSamples);

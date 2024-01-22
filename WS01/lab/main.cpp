@@ -1,8 +1,8 @@
 /***********************************************************************
 Workshop 1: Compiling modular source code
-File	w1p2.cpp
+File	w1p1.cpp
 Version 1.0
-Author	Sheng-Lin Yang  2241
+Author	Fardad Soleimanloo  2241
 Description:
    This provides some source code in a single file to break 
    into modules and compile together
@@ -12,7 +12,6 @@ Revision History
 Name            Date            Reason       
 
 ***********************************************************************/
-
 
 #include <iostream>
 #include "graph.h"
