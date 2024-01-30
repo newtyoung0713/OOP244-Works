@@ -1,6 +1,7 @@
 #ifndef SENECA_ASSESSMENT_H
 #define SENECA_ASSESSMENT_H
-
+#include <iostream>
+#include <cstdio>
 namespace seneca {
   struct Assessment {
     double* m_mark;
@@ -13,7 +14,7 @@ namespace seneca {
 
   bool read(char* cstr, FILE* fptr);
 
-  bool read(Assessment& asm, FILE* fptr);
+  bool read(Assessment& assess, FILE* fptr);
 
   void freeMem(Assessment*& aptr, int size);
 
