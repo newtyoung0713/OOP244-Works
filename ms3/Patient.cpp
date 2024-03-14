@@ -160,10 +160,9 @@ namespace seneca {
   std::istream& Patient::read(std::istream& is) {
     bool flag(true);
     char name[NAME_LEN + 1];
-    m_ohip = 0;
     if (&is == &cin) {
       cout << "Name: ";
-      is.get(name, NAME_LEN, '\n');
+      is.get(name, NAME_LEN + 1, '\n');
       is.ignore(1000, '\n');
       clear();
       m_name = new char[strlen(name) + 1];
@@ -184,17 +183,18 @@ namespace seneca {
           flag = false;
         }
       } while (!flag);
-    // } else if (typeid(is) == typeid(ifstream)) {   // zsh: illegal hardware instruction at 79
-    // } else if (typeid(is) == typeid(this)) {   // zsh: segmentation fault at 87
-    // } else if (this->read(is)) {    // zsh: segmentation fault at 79
     } else {  // EXC_BAD_INSTRUCTION (code=EXC_I386_INVOP, subcode=0x0)
-      is.getline(name, NAME_LEN, ',');
-      // while (is.getline(name, NAME_LEN, ','));
+      is.getline(name, NAME_LEN + 1, ',');
       clear();
       m_name = new char[strlen(name) + 1];
       strcpy(m_name, name);
-      is.ignore(1000, ',');
+      // int ch = is.peek();
+      // cout << ch << endl;
+      // is.ignore();
+      // is.ignore(1000, ',');
+      // is.ignore();
       is >> m_ohip;
+      is.ignore(1000, ',');
       m_ticket.read(is);
     }
     return is;
