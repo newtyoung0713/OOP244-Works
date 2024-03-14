@@ -4,6 +4,9 @@
 #include "IOAble.h"
 #include "Ticket.h"
 namespace seneca {
+  const int NAME_LEN(50);
+  const unsigned int MIN_OHIP(100000000);
+  const unsigned int MAX_OHIP(999999999);
   class Patient : public IOAble {
     char* m_name;
     int m_ohip;

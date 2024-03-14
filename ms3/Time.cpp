@@ -59,7 +59,7 @@ namespace seneca {
   // it pads them with a leading zero. 
   // For example, it formats the times as 03:02, 16:55, and 234:06.
   void Time::write(ostream& ostr) const {
-    cout << setw(2) << setfill('0') << m_minutes / 60 << ":"
+    ostr << setw(2) << setfill('0') << m_minutes / 60 << ":"
          << setw(2) << setfill('0') << m_minutes % 60;
   }
 

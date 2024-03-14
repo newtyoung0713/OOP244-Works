@@ -39,7 +39,8 @@ namespace seneca {
     of an IOAble object into ostream using the IOAble::write function. 
     */
     ostream& operator<<(ostream& os, const IOAble& ioa) {
-      return ioa.write(os);
+      ioa.write(os);
+      return os;
     }
 
     /* 
@@ -47,6 +48,7 @@ namespace seneca {
     from an istream into an IOAble object using the IOAble::read function. 
     */
     istream& operator>>(istream& is, IOAble& ioa) {
-      return ioa.read(is);
+      ioa.read(is);
+      return is;
     }
 }
