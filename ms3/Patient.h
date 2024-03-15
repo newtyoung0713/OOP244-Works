@@ -9,7 +9,7 @@ namespace seneca {
   const unsigned int MAX_OHIP(999999999);
   class Patient : public IOAble {
     char* m_name;
-    unsigned int m_ohip;
+    int m_ohip;
     Ticket m_ticket;
   public:
     void clear();

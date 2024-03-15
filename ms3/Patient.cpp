@@ -13,7 +13,6 @@
 #include <iostream>
 #include <iomanip>
 #include <cstring>
-#include <fstream>
 #include "Patient.h"
 using namespace std;
 namespace seneca {
@@ -160,12 +159,12 @@ namespace seneca {
   std::istream& Patient::read(std::istream& is) {
     bool flag(true);
     char name[NAME_LEN + 1];
+    clear();
     if (&is == &cin) {
       cout << "Name: ";
       is.get(name, NAME_LEN + 1, '\n');
       is.ignore(1000, '\n');
-      clear();
-      m_name = new char[strlen(name) + 1];
+      m_name = new char[strlen(name)];
       strcpy(m_name, name);
       cout << "OHIP: ";
       do {
@@ -183,18 +182,13 @@ namespace seneca {
           flag = false;
         }
       } while (!flag);
-    } else {  // EXC_BAD_INSTRUCTION (code=EXC_I386_INVOP, subcode=0x0)
-      is.getline(name, NAME_LEN + 1, ',');
-      clear();
-      m_name = new char[strlen(name) + 1];
+    } else {
+      is.get(name, NAME_LEN + 1, ',');
+      m_name = new char[strlen(name)];
       strcpy(m_name, name);
-      // int ch = is.peek();
-      // cout << ch << endl;
-      // is.ignore();
-      // is.ignore(1000, ',');
-      // is.ignore();
-      is >> m_ohip;
       is.ignore(1000, ',');
+      is >> m_ohip;
+      is.ignore();
       m_ticket.read(is);
     }
     return is;
