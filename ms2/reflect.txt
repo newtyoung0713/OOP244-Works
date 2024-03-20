@@ -1,0 +1,25 @@
+For the milestone-1:
+I got the problems with menu.cpp about display function.
+1. I did not know how to set the menu with three spaces,
+   then I could not show the result properly on Matrix after.
+   So I search how to make it right with istringstream and getline.
+2. At the beginning, I put the display function at wrong place until I submitted it on Matrix,
+   so I modified it many times to a right place to make the output right.
+3. I did not know how to determine the whitespace after a number like "1 ",
+   so I checked how to make it right with cin.peek
+
+Another problem with time.cpp about how to calculate time properly.
+1. But mostly I got the problem is the same as menu.cpp,
+   but with another type that I had to check a colon.
+   Like when I typed "12", it should be wrong,
+   and I did not know how to make it.
+   Therefore, I tried to use cin.peek to make it right.
+2. I used m_hours to calculate, but I had a problem in read function,
+   so I modified it with only m_minutes,
+   then used the formula in different places,
+   the result was right.
+
+For the milestone-2
+I had no idea how to make pure virtual function before the class,
+so I found videos about virtual, pure virtual and abstract,
+then I did it right and could submit it well.
