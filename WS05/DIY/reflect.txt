@@ -1,0 +1,28 @@
+In this workshop
+For the first part, I was confused some of instructions.
+I could not be sure why we should consider if their difference is less than 0.001.
+Also, I was struggling with how to implement the operators about these:
+++, -=, ==, <<, and >
+However, I tried many times with = or += for the operator++,
+how should I multiplied by -1 for the specified value,
+how to compare three values are identical,
+how to make sure for the increasing and decreasing the funds properly,
+and how to make the lhs and rhs casting correct.
+After many hours,
+I found how to make them well.
+
+For the second part,
+I stuck with how to set up power level well.
+At the end, even only used twice, I still made a function for it.
+However, I still had problem with the operator, one of them, operator+=.
+Therefore I found a way to make it well,
+like copy the original object to the new one,
+deleted the old one for preparing to get new data,
+then assigned new data after the old data,
+finally to assign the whole new data to the original object.
+at the end, I had no idea how to make the prototype about the functions.
+However, I remembered we learned a keyword about how to access another class, that is by FRIENDSHIP.
+So I made four friendships for the functions to make sure
+that I could use data member from different classes,
+and because of these four functions had the keyword friend,
+I had to declare them in the class.
