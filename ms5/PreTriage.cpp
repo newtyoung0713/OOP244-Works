@@ -4,7 +4,7 @@
 //  Student ID# : 160443222
 //	Email       : syang153@myseneca.ca
 //	Section     : OOP244 NAA
-//	Date        : March 14th, 2024
+//	Date        : April 03rd, 2024
 //	Authenticity Declaration :
 //  I have done all the coding by myself and only copied the code 
 //  that my professor provided to complete my milestones and assignments.
@@ -14,9 +14,13 @@
 #include <iomanip>
 #include <fstream>
 #include <cstring>
+#include <typeinfo>
+#include "Menu.cpp"
+#include "Time.h"
 #include "PreTriage.h"
 #include "TestPatient.h"
 #include "TriagePatient.h"
+#include "Utils.h"
 using namespace std;
 namespace seneca {
   void PreTriage::clear() {
@@ -25,20 +29,21 @@ namespace seneca {
       m_lineUp[i] = nullptr;
     }
   }
-  /* getWaitTime (Query)
-  Receives a constant Patient Reference 
-  and returns the total estimated wait time 
-  for that type of Patient (contagion or Triage) as follows:
-  Find the number of Patients in the lineup 
-  that match the type of the received Patient Reference.
-  Returns the product of estimated wait time 
-  (for that type of patient) to the number of patients found.
-  This method does not change the state of the class. */
-  // const Time PreTriage::getWaitTime(const Patient& uneAutre) const {}
+
+  const Time PreTriage::getWaitTime(const Patient& uneAutre) const {
+    char tempType = (typeid(uneAutre) == typeid(TestPatient)) ? 'C' : 'T';
+    int matched = 0;
+    // EWT as known as Estimated Wait Time
+    int EWT = (tempType == 'C') ? m_waitTimeCT : m_waitTimeT;
+    for (int i = 0; i < m_noOfPatient; ++i) {
+      if (m_lineUp[i]->type() == tempType) {
+        matched++;
+      }
+    }
+    return matched * EWT;
+  }
+
   /* setAverageWaitTime (Modifier)
-  Receives the reference of the admitting patient 
-  and adjusts the average wait time of that type of patient 
-  based on the admittance time of the patient.
   Modify and set the value of the average wait time 
   of the corresponding patient using the following formula:
     CT: Current Time
@@ -47,18 +52,18 @@ namespace seneca {
     PTN: Patient's Ticket Number
     AWT = ((CT - PTT) + (AWT * (PTN - 1))) / PTN */
   void PreTriage::setAverageWaitTime(Patient& uneAutre) {
-
+    Time CT;
+    int ctTime = CT.reset();
+    Time PTT = uneAutre.time();
+    int PTN = uneAutre.number();
+    Time& AWT = uneAutre.type() == 'C' ? m_waitTimeCT : m_waitTimeT;
+    AWT = ((ctTime - PTT) + (AWT * (PTN - 1))) / PTN;
   }
-  /* indexOfFirstInLine (Query)
-  Receives a character representing the type of patient (C for Contaigen, T for Triage).
-  Finds the index of the first patient in line that matches a specified type.
-  This function iterates over the lineup array of pointers from the beginning. 
-  For each patient, it compares the patient's type 
-  with the specified type (using overloaded operator==). 
-  If a match is found, the function returns the found index. 
-  If the function iterates over the entire lineup 
-  without finding a match, it returns -1 */
+  
   int PreTriage::indexOfFirstInLine(char type) const {
+    for (int i = 0; i < m_noOfPatient; i++)
+      if (*m_lineUp[i] == type)
+        return i;
     return -1;
   }
   
@@ -84,9 +89,10 @@ namespace seneca {
         break;
       }
       temp->read(importFile);
-      m_lineUp[m_noOfPatient++] = temp;
+      m_lineUp[m_noOfPatient] = temp;
+      m_noOfPatient++;
     }
-    if (m_noOfPatient > MAX_NUM) 
+    if (m_noOfPatient >= MAX_NUM) 
       cout << "Warning: number of records exceeded " << MAX_NUM
             << "\n" << MAX_NUM << " Records imported..." << endl;
     else if (m_noOfPatient > 0)
@@ -106,31 +112,81 @@ namespace seneca {
     }
     cout << m_numOfCT << " Contagion Tests and " << m_numOfT << " Triage records were saved!" << endl;
   }
-  /* register (Modifier)
-  Registers a new patient:
-  Create a Menu object for a sub-menu 
-  for patient type selection with one indentation (1 tab) 
-  as follows to be displayed later. */
+  
   void PreTriage::reg() {
-    cout << "Select Type of Registration: " << endl
-         << "1- Contagion Test" << endl
-         << "2- Triage" << endl
-         << "0- Exit" << endl
-         << "> ";
+    if (m_noOfPatient >= MAX_NUM) {
+      cout << "Line up full!" << endl;
+      return;
+    }
+    seneca::Menu sub_menu("Select Type of Registration:\n1- Contagion Test\n2- Triage\n", 1);
+    int selection;
+    Time time;
+    sub_menu >> selection;
+    if (selection == 1) {
+      m_lineUp[m_noOfPatient] = new TestPatient;
+      ++m_numOfCT;
+    } else if (selection == 2) {
+      m_lineUp[m_noOfPatient] = new TriagePatient;
+      ++m_numOfT;
+    } else {return;}
+    m_lineUp[m_noOfPatient]->setArrivalTime();
+    cout << "Please enter patient information: " << endl;
+    cin.ignore();
+    cin >> *m_lineUp[m_noOfPatient];
+    cout << endl << "******************************************" << endl
+         << *m_lineUp[m_noOfPatient] 
+         << "Estimated Wait Time: " << getWaitTime(*m_lineUp[m_noOfPatient]);
+    cout << endl << "******************************************" << endl << endl;
+    m_noOfPatient++;
   }
-  /* admit (Modifier)
-  Calls the next patient in line to be admitted 
-  to the contagion test centre or Triage centre
-  Create a Menu object for a sub-menu 
-  for patient type selection with one indentation (1 tab) 
-  as follows to be displayed later. */
+
   void PreTriage::admit() {
-
+    seneca::Menu sub_menu("Select Type of Admittance:\n1- Contagion Test\n2- Triage\n", 1);
+    int selection, index;
+    Time time;
+    sub_menu >> selection;
+    if (selection == 1) {
+      m_type = 'C';
+      --m_numOfCT;
+    } else if (selection == 2) {
+      m_type = 'T';
+      --m_numOfT;
+    } else {return;}
+    index = indexOfFirstInLine(m_type);
+    if (index == -1) {
+      cout << "Lineup is empty!\n";
+      return;
+    }
+    cout << endl;
+    cout << "******************************************" << endl;
+    cout << "Call time: [" << time.reset() << "]" << endl;
+    cout << "Calling at for " << *m_lineUp[index];
+    cout << "******************************************" << endl << endl;
+    setAverageWaitTime(*m_lineUp[index]);
+    U.removeDynamicElement(m_lineUp, index, m_noOfPatient);
   }
-  /* lineup (Query)
-  Prints a report on patients currently in the lineup. */
-  void PreTriage::lineup() {
 
+  void PreTriage::lineup() {
+    seneca::Menu sub_menu("Select The Lineup:\n1- Contagion Test\n2- Triage\n", 1);
+    int selection, count;
+    bool flag(true);
+    sub_menu >> selection;
+    flag = (selection == 1 || selection == 2) ? false : true;
+
+    if (!flag) {
+      count = 0;
+      cout << "Row - Patient name                                          OHIP     Tk #  Time\n"
+          << "-------------------------------------------------------------------------------" << endl;
+      for (int i = 0; i < m_noOfPatient; ++i) {
+        if ((selection == 1 && typeid(*m_lineUp[i]) == typeid(TestPatient)) ||
+            (selection == 2 && typeid(*m_lineUp[i]) == typeid(TriagePatient))) {
+          (m_lineUp[i]) ? 
+          clog << left << setw(4) << setfill(' ') << (++count) << "- " << *m_lineUp[i] << endl : 
+          cout << "Line up is empty!\n";
+        }
+      }
+      cout << "-------------------------------------------------------------------------------" << endl;
+    }
   }
   
   PreTriage::PreTriage(const char* fileName)

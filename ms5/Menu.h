@@ -22,6 +22,7 @@ namespace seneca {
     int m_text;
     int m_numTab;
   public:
+    Menu() = default;
     // This constructor is designed to initialize a Menu object. 
     // It takes two parameters: a pointer to a character string menuContent, 
     // and an optional integer numberOfTabs with a default value of 0.
@@ -35,20 +36,19 @@ namespace seneca {
     Menu(const char* menuContent, int numberOfTabs = 0);
 
     // Deallocates the dynamically allocated memory.
-    ~Menu();
+    virtual ~Menu();
 
     // Makes sure the Menu can not be copied or assigned to another Menu object.
     // Copy and assignment
     // Can not be copy and assignment
-    Menu(const Menu& other) = delete;
-    Menu& operator=(const Menu& other) = delete;
+    Menu(const Menu& uneAutre) = delete;
+    Menu& operator=(const Menu& uneAutre) = delete;
 
     // The display method is responsible for presenting the Menu content to the user. 
     // It first outputs the menu options and a new line. 
     // Following the list of options, it prints:
     // 0- Exit
     // > _
-
     // This provides an option for the user to exit the menu and also indicates 
     // where the user can input their choice.
     // If the number of tabs attribute is not zero, 
@@ -62,7 +62,6 @@ namespace seneca {
     // 2- Option two
     // 0- Exit
     // >
-
     // A menu with number of tabs set to 2:
     //   Tester Options menu:
     //   1- Option one
@@ -106,7 +105,6 @@ namespace seneca {
     // allowing for chained insertion operations. 
     // The const qualifier ensures that the method does not modify any class members.
     // std::ostream& displayMethod(std::ostream& ostr = std::cout) const;
-
     // For any class that requires scanning or reading from input, 
     // the method should adhere to the following format, 
     // unless specified otherwise:
@@ -115,7 +113,6 @@ namespace seneca {
     // enabling chained extraction operations. 
     // This method is used to read or scan data into the class members.
     // std::istream& readMethod(std::istream& istr = std::cin);
-
     // These methods provide a standard interface for output and input operations, 
     // enhancing the usability and flexibility of your classes.
 

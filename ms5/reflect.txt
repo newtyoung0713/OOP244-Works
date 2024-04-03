@@ -1,1 +1,40 @@
-s
+In this milestone-51
+I got several problems with delimiter, output problem, loop condition
+
+I tried many times for how to instantiate a Contagion Test Patient and Triage Patient
+but I did not know how to implement it.
+Then I checked the handout and the note about the file of b-dynamicDefaultDerived from 15-Mar21
+Base* D = new Derived;
+
+After studied this, and got a reference from this syntax,
+I solved one of the problems.
+
+I tried many times about output, and just noticed that I made the wrong order for the read function of temp patient pointer.
+I did not know should I use lineup or temp patient pointer to read the patient information from the file.
+And checked if I used lineup to read file, I would get BAD ACCESS,
+therefore, I used temp patient pointer to read the information from the file.
+
+For the big problem of this milestone-51, delimiter,
+I checked the instruction many times that if I made wrong with the any file import,
+however, everything was not wrong about that.
+So I changed the way to check the delimiters,
+I found that I used many ignore(1000, ',') and ignore(1000, '\n')
+After that I made them all with ignore() or deleted them,
+I checked the output did it match the correct output,
+and yes, I got them right.
+
+
+---
+
+Learnings: What new concepts or skills did you acquire during this project? 
+How did your understanding of C evolve into C++, 
+especially in terms of object orientation?
+
+Challenges: What were the most significant challenges you encountered 
+while developing the application? 
+How did you overcome these challenges, 
+and what strategies did you employ? 
+Feel free to share any insights, lessons learned, 
+or personal growth you experienced throughout the project. 
+Your reflections will provide valuable feedback 
+and contribute to your overall learning journey.
