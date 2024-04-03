@@ -1,0 +1,28 @@
+In this workshop-7
+I did have a few problems while I did it.
+But after one day later, I found what are the problems I had, and solved them.
+At the beginning, I followed the instruction, and it was good to understand this workshop.
+I can make everything easily in an hour.
+But after programmed this workshop,
+I faced with virtual constructor and made two virtual destructor function in BankAccount.h and SavingsAccount.h,
+then I added after the class.
+
+I debugged with SavingsAccount.cpp for the output,
+I could not make the output well, like m_interest and m_balance,
+then I modified the formula and switched the position,
+and I got the correct answer after the debugging.
+
+Another one is how to insert the data successfully in BankAccount.cpp,
+and I tried many times with cin.clear(), cin.ignore().
+cin.ignore() seemed working, but not for cin.clear().
+However, even I knew cin.ignore() is working, I still had problem with insertion.
+I tried with cin.ignore(1000, '\n'), but I could not get the right output.
+So I used another variable to assign the value by strcpy to m_name,
+but it did not work.
+I remembered milestone-1 had one method could determine the insertion with character, cin.peek(),
+therefore, I used cin.peek() == '\n',
+and used that as a condition in if statement to check is the insertion on first m_name or second one,
+like if (in.peek() == '\n') in.ignore();
+then after that asks the user insert m_name,
+and I saw it worked.
+Eventually, I confirmed everything, and yes, everything is okay to submit.
