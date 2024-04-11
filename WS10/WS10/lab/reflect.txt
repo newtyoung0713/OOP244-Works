@@ -1,0 +1,32 @@
+In this workshop-10
+I learned how to use TEMPLATE in my program,
+but even I made this one, it was still hard to understand all of them.
+Like TEMPLATE is an another type of data, and for all of types,
+and the syntax when we want to use it.
+
+Therefore, it can be any basic type of int, float something.
+We can use it to make a dynamic allocate as we did before with char type.
+
+Another problem is that how to use the syntax smoothy.
+Such as Pair<T, U> from addDynamicPairElement.
+So I think when I code this project or for the OOP345,
+and facing to TEMPLATE, I need to switch it to like int or double or char or something else.
+Moreover, if I do have many data type with other data types,
+I can use TEMPLATE instead, then can make the code simply and easy to understand in the future.
+
+I think the last point I learned that was how many typename that I need?
+It depends on the function designing.
+Getting a reference from the last answer,
+if I do have two attributes, and the function that designed with two different data types
+that we may need to use in the function,
+then I have to declare two typename at the beginning.
+
+Furthermore, if we just want to deallocate,
+since we do not know that data type,
+we just implement with one typename, and use it in parameter.
+
+To summary,
+the structure or class that with TEMPLATE, no matter how many typename that we are going to use,
+the syntax will be " identifier<typename A, typename B, ... , typename XXX> ",
+so when we use it, we have to have the same number of typename with the TEMPLATE,
+then we can happy to use that structure or class in our function.
