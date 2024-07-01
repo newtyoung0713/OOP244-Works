@@ -1,0 +1,18 @@
+For this workshop-6
+I faced a few problems
+1. I did not know how to print everything out well,
+   until I made the loadEmails function.
+2. I did not know how to import and export files,
+   until I saw the function of setNoOfEmails.
+3. I searched how to implement making data(s) into a dynamic array,
+   then review the functions in the class of Email,
+   just knew I could use the load function to get it.
+
+However, before I got the right output, I faced many problems,
+so I step by step to try every single problem.
+Also, I checked is any prototype that I made wrong way.
+And trying to make sure the code are right with the output.
+
+I think I am still not familiar with some concepts, and English as well.
+Because I need to use translator to help me understanding what the introduction means,
+then I just can do it properly that the author wants.

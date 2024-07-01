@@ -1,0 +1,23 @@
+In this workshop-8
+I learned how to use "protected",
+it helped me to access the member variable from different cpp file,
+then I can access the variable for implementation this workshop.
+
+Because of SavingsAccount and ChequingAccount all based on Account,
+therefore, after I set the member variable, m_curBalance, in the protected,
+while I was coding SavingsAccount.cpp and ChequingAccount.cpp,
+I did not need to worry do I need to implement setter as before,
+and I just use it with no doubt.
+
+However, before I done with the workshop
+that I stuck at the instructions for a while because I was confused,
+and I did not realized 
+that I had to make the current balance in the protected.
+And was thinking about how to make setter in Utils.cpp and Utils.h.
+
+Furthermore, when I knew the current balance should be in the protected,
+and used google translator, I made this workshop successfully.
+
+After I finished this workshop,
+I tried my best to simple my code as I can.
+such as return true or false without a bool variable.
