@@ -24,7 +24,7 @@ This project is a comprehensive Patient Management System developed in C++, desi
 
 ## Modules Used
 - **Menu**
-- **Interface**
+- **IOAble**
 - **Time**
 - **TestPatient**
 - **TriagePatient**
