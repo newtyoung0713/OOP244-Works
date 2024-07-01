@@ -1,0 +1,134 @@
+For this workshop-6
+I faced a few problems
+1. I did not know how to print everything out well,
+   until I made the loadEmails function.
+2. I did not know how to import and export files,
+   until I saw the function of setNoOfEmails.
+3. I searched how to implement making data(s) into a dynamic array,
+   then review the functions in the class of Email,
+   just knew I could use the load function to get it.
+
+However, before I got the right output, I faced many problems,
+so I step by step to try every single problem.
+Also, I checked is any prototype that I made wrong way.
+And trying to make sure the code are right with the output.
+
+I think I am still not familiar with some concepts, and English as well.
+Because I need to use translator to help me understanding what the introduction means,
+then I just can do it properly that the author wants.
+
+-------------------------
+
+In this workshop-7
+I did have a few problems while I did it.
+But after one day later, I found what are the problems I had, and solved them.
+At the beginning, I followed the instruction, and it was good to understand this workshop.
+I can make everything easily in an hour.
+But after programmed this workshop,
+I faced with virtual constructor and made two virtual destructor function in BankAccount.h and SavingsAccount.h,
+then I added after the class.
+
+I debugged with SavingsAccount.cpp for the output,
+I could not make the output well, like m_interest and m_balance,
+then I modified the formula and switched the position,
+and I got the correct answer after the debugging.
+
+Another one is how to insert the data successfully in BankAccount.cpp,
+and I tried many times with cin.clear(), cin.ignore().
+cin.ignore() seemed working, but not for cin.clear().
+However, even I knew cin.ignore() is working, I still had problem with insertion.
+I tried with cin.ignore(1000, '\n'), but I could not get the right output.
+So I used another variable to assign the value by strcpy to m_name,
+but it did not work.
+I remembered milestone-1 had one method could determine the insertion with character, cin.peek(),
+therefore, I used cin.peek() == '\n',
+and used that as a condition in if statement to check is the insertion on first m_name or second one,
+like if (in.peek() == '\n') in.ignore();
+then after that asks the user insert m_name,
+and I saw it worked.
+Eventually, I confirmed everything, and yes, everything is okay to submit.
+
+-------------------------
+
+In this workshop-8
+I learned how to use "protected",
+it helped me to access the member variable from different cpp file,
+then I can access the variable for implementation this workshop.
+
+Because of SavingsAccount and ChequingAccount all based on Account,
+therefore, after I set the member variable, m_curBalance, in the protected,
+while I was coding SavingsAccount.cpp and ChequingAccount.cpp,
+I did not need to worry do I need to implement setter as before,
+and I just use it with no doubt.
+
+However, before I done with the workshop
+that I stuck at the instructions for a while because I was confused,
+and I did not realized 
+that I had to make the current balance in the protected.
+And was thinking about how to make setter in Utils.cpp and Utils.h.
+
+Furthermore, when I knew the current balance should be in the protected,
+and used google translator, I made this workshop successfully.
+
+After I finished this workshop,
+I tried my best to simple my code as I can.
+such as return true or false without a bool variable.
+
+-------------------------
+
+For this workshop-9
+I think we focus on rule of three,
+and more about copy constructor and copy assignment operator.
+
+At the beginning, I think I know what are the rule of three in OOP.
+However, I did this workshop and I did not know that much about rule of three.
+First of all, I think I did the class of LibraryItem well,
+and I would do the class of Book okay as well.
+When I ran the program and got the output,
+I failed with the copy constructor and the copy assignment operator parts,
+then I checked for the whole program for it.
+Moreover, I used Xcode to debug this workshop
+and I did not find any problem for the output.
+
+In addition, I checked the copy constructor and the copy assignment operator again,
+and just realized I got the problem in the class of Book,
+not had a problem in the class of the LibraryItem.
+Furthermore, I initialized the LibraryItem on the initializer list of the copy constructor of Book,
+and invoked the copy assignment operator of LibraryItem 
+in the copy assignment operator of Book.
+Then I got the correct output for this workshop.
+
+Furthermore, I checked the concept about this problem.
+I got if we invoked LibraryItem on Book's copy constructor,
+I could make it sure that copy book's attribute to LibraryItem,
+and it's similar idea for copy assignment operator for Book.
+Invoking the copy assignment operator of LibraryItem inside of Book,
+to make sure the compiler can assign the value to LibraryItem,
+then the program can handle the value well and go through the whole program.
+
+-------------------------
+
+In this milestone-51
+I got several problems with delimiter, output problem, loop condition
+
+I tried many times for how to instantiate a Contagion Test Patient and Triage Patient
+but I did not know how to implement it.
+Then I checked the handout and the note about the file of b-dynamicDefaultDerived from 15-Mar21
+Base* D = new Derived;
+
+After studied this, and got a reference from this syntax,
+I solved one of the problems.
+
+I tried many times about output, and just noticed that I made the wrong order for the read function of temp patient pointer.
+I did not know should I use lineup or temp patient pointer to read the patient information from the file.
+And checked if I used lineup to read file, I would get BAD ACCESS,
+therefore, I used temp patient pointer to read the information from the file.
+
+For the big problem of this milestone-51, delimiter,
+I checked the instruction many times that if I made wrong with the any file import,
+however, everything was not wrong about that.
+So I changed the way to check the delimiters,
+I found that I used many ignore(1000, ',') and ignore(1000, '\n')
+After that I made them all with ignore() or deleted them,
+I checked the output did it match the correct output,
+and yes, I got them right.
